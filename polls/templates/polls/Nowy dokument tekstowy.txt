@@ -1,0 +1,42 @@
+W index:
+    <li><a href="{% url 'polls:detail' name_of_quiz.id %}">{{ name_of_quiz.name }}</a></li>
+
+
+to działało.
+
+
+
+        <li><a href="/polls/{{Name_of_quiz.id}}/">{{ Name_of_quiz.Name}}</a>- {{Name_of_quiz.Grand}}</li>
+
+
+
+to był detail:
+<h1> {{Name_of_quiz.Name}}</h1>
+<h1> {{Name_of_Question.Text_of_Question}}</h1>
+
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form action="{% url 'polls:detail' Name_of_Question.id %}" method="post">
+{% csrf_token %}
+
+</form>
+
+
+
+MACKA POMYSL:
+{% load static %}
+<h1>  {{question.Text_of_Question}} </h1>
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+{% if question %}
+    <ul>
+    {% for Text_of_Question in question %}
+    <li><a href="{% url 'polls:detail' Name_of_Question.id %}">{{ question.Text_of_Question }}</a> </li>
+
+
+        </li>
+
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
